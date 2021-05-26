@@ -33,7 +33,7 @@ def front_page_request(wiki_name="Fedora's wiki"):
 
 #@app.route('/post/<int:post_id>')
 
-@app.route("/view/<page_name>")
+@app.route("/view/<path:page_name>")
 def page_request(page_name):
     try:
         with open("pages/" + str(page_name), "r") as file:
