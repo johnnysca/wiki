@@ -1,0 +1,19 @@
+grade	96
+
+pdf in git repo?	10
+authors listed?	10
+section titles?	10
+vision?	10
+motivation?	8
+goals?	10
+non-goals?	10
+functional requirements?	10
+non-functional requirements?	8
+use cases?	10
+Notes	"Motivation: I think I understand the problem of ""too extensive"", but this could be clearer. What tasks are difficult that could be made easier? For example, maybe you remember the name of the course but you've forgotten one of the volunteer names?
+
+Non-functional requirements: I like these. Regarding ""easy to use"", be more specific / measurable. Perhaps ""features can be understood and used without training""?
+
+Note about the topic choice:
+
+When you start making content for your pages, ask the folks included what information they're comfortable sharing. That way if you choose to make the repository public at the end of the class, you can publish some content along with it. (Or feel free to change topic slightly. Perhaps still information for other TechX students, but focused on course information?)"
