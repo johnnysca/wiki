@@ -32,3 +32,11 @@ def test_view_page_name(client):
     resp = client.get("/view/test_pages/name_test")
     assert resp.status_code == 200
     assert b"Geidel\nKevin\nJohnny" in resp.data
+
+def test_formatting(client):
+    resp = client.get("/view/test_pages/testing")
+    assert b'<h1>Happy Late Memorial Day</h1>' in resp.data
+    assert b'<p>It was a great <strong>day</strong></p>' in resp.data
+    assert b'<p>Memorial day is a day to celebrate</p>' in resp.data
+    assert b'<a href="https://images.app.goo.gl/cF4oaTNxEPsMFKk76">Memorial day picture</a>' in resp.data
+      
