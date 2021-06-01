@@ -1,1 +1,6 @@
-This is our test for the front_page_wiki
+# This is the front page of Fedora's wiki
+
+This page will contain additional information 
+to be displayed in the **future**
+
+For now, look at this [ranch](https://images.app.goo.gl/jnYh7jueoT5iT1PC9)

@@ -1,11 +1,11 @@
 from flask import Flask 
 from flask import render_template
+import format
 
 app = Flask(__name__)
 
 @app.route("/")
 def main():
-    #return handle_request()
     return front_page_request()
 
 #Example function, to be changed or deleted later
@@ -20,16 +20,8 @@ def handle_request(name="wiki",content="stuff"):
 
 
 @app.route("/view")
-def front_page_request(wiki_name="Fedora's wiki"):
-    with open("pages/FrontPage.txt", "r") as file:
-        content = file.read()
-
-    # Load the desired page content
-    return render_template(
-        "main.html",
-        page_name=wiki_name,
-        page_content=content,
-    )
+def front_page_request():
+    return page_request("FrontPage")
 
 @app.route("/view/<path:page_name>")
 def page_request(page_name):
@@ -38,10 +30,11 @@ def page_request(page_name):
             content = file.read()
     except:
         raise FileNotFoundError 
+    
+    with open("templates/" + str(page_name) + ".html","w") as file:
+        file.write(format.formatter(content))
 
     # Load the desired page content
     return render_template(
-        "main.html",
-        page_name=page_name,
-        page_content=content,
+        page_name+".html"
     )

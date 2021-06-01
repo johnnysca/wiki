@@ -1,5 +1,14 @@
 import marko 
+import re
 
-print(marko.convert("# Hello"))
-print(marko.convert("El rancho de geidel"))
-print(marko.convert("[This is the ranch](https://images.app.goo.gl/jnYh7jueoT5iT1PC9)"))
+def formatter(markdown_txt):
+    removed_tag_txt = remove_tags(markdown_txt)
+    html_txt = marko.convert(removed_tag_txt)
+    return html_txt
+
+def remove_tags(str1):
+    taged_string = re.compile(r'<[^>]+>')
+    return taged_string.sub("", str1)
+
+
+
