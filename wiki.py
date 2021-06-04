@@ -18,7 +18,7 @@ def handle_request(name="wiki", content="stuff"):
         "main.html",
         page_name=name,
         page_content=content,
-    )
+    )  # pragma: no cover
 
 
 @app.route("/view")
