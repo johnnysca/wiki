@@ -1,5 +1,5 @@
 # import pathlib
-import pytest
+import pytest  # type:ignore
 import wiki
 
 

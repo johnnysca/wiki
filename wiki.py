@@ -39,5 +39,3 @@ def page_request(page_name: str) -> str:
 
     # Load the desired page content
     return render_template(page_name + ".html")
-
-
