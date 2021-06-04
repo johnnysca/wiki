@@ -3,6 +3,6 @@ pytest==6.2.3
 marko==1.0.2
 flake8==3.9.1
 black==21.4b2
-#pre-commit==2.12.1
+pre-commit==2.12.1
 mypy==0.812
 pytest-cov==2.11.1
