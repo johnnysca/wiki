@@ -1,4 +1,4 @@
-import marko
+import marko  # type:ignore
 import re
 
 

@@ -11,3 +11,7 @@ format:
   script:
   - pip install black==21.4b2
   - black --check
+type-checking:
+  script:
+  - pip install mypy==0.812
+  - mypy .

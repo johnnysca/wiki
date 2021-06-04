@@ -27,7 +27,7 @@ def front_page_request():
 
 
 @app.route("/view/<path:page_name>")
-def page_request(page_name):
+def page_request(page_name: str) -> str:
     try:
         with open("pages/" + str(page_name) + ".txt", "r") as file:
             content = file.read()
@@ -39,3 +39,5 @@ def page_request(page_name):
 
     # Load the desired page content
     return render_template(page_name + ".html")
+
+
