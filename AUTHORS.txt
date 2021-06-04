@@ -1,4 +1,7 @@
 Johnny Castillo <johnnycastillo@google.com>
 Kevin Moreno <kjmtxep@google.com>
 Geidel Solivan <geidelxavier@google.com>
+<<<<<<< AUTHORS.txt
 Kelvin Estrada <kelvinestrada@google.com>
+Melissa Chisholm <marevalogarcia@google.com>
+>>>>>>> AUTHORS.txt
