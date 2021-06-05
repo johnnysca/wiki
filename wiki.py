@@ -13,7 +13,16 @@ def main():
 # Example function, to be changed or deleted later
 @app.route("/about")
 def handle_request(name="wiki", content="stuff"):
-    # TODO: load the desired page content
+    """
+    Calls Render Template passing paramaters that map to properties of web page.
+
+    Args:
+        name: The name to be be displayed on the page title.
+        content: Text displayed on the webpage when template is rendered.
+
+    Returns:
+        Rendered webpage containing the arguments, but displayed in plaintext.
+    """
     return render_template(
         "main.html",
         page_name=name,
@@ -23,11 +32,28 @@ def handle_request(name="wiki", content="stuff"):
 
 @app.route("/view")
 def front_page_request():
+    """Used by main to display the front page of wiki"""
     return page_request("FrontPage")
 
 
 @app.route("/view/<path:page_name>")
 def page_request(page_name: str) -> str:
+    """
+    Displays webpage from txt file
+
+    Opens the text file that is requested according to its location in
+    the wiki repository.  Reads the txt file, then it opens an html file
+    with the desired contents to be displayed in a webpage.
+
+    Args:
+        page_name: Name of the txt that is being requested to view and name of html to be created
+
+    Returns:
+        Rendered webpage containing the arguments, but displayed in plaintext.
+
+    Raises:
+        FileNotFoundError: Flags when the txt file requested cant be found
+    """
     try:
         with open("pages/" + str(page_name) + ".txt", "r") as file:
             content = file.read()
