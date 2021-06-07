@@ -3,7 +3,7 @@ import pytest  # type:ignore
 import wiki
 
 
-# TODO: add more comments after docustring clarification
+# TODO: add more comments after docstring clarification
 
 @pytest.fixture
 def client():

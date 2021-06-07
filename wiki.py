@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
 import format
+import json
 
 app = Flask(__name__)
 
@@ -65,3 +66,17 @@ def page_request(page_name: str) -> str:
 
     # Load the desired page content
     return render_template(page_name + ".html")
+
+
+@app.route('/api/v1/page/<page_name>/get')
+def page_api_get(page_name):
+    f = request.args.get('format', 'all') # format is a dictionary
+    json_response = {}
+    status_code = 200
+    # TODO: implement response
+    if f == "all":
+        with open("pages/" + str(page_name) + ".txt", "r") as file:
+            content = file.read()
+        h_content = format.formatter(content)
+        json_response = {"success":True, "raw": content, "html": h_content}
+    return json_response , status_code
