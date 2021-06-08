@@ -1,13 +1,16 @@
 <h2>Edit Wiki Page: {{ pagename }}</h2>
+ 
+<form action="/edit/{{ pagename }}" method="post">
+ <p>(All edits must be written in <a href="https://www.markdownguide.org/basic-syntax/">Markdown syntax.</a>)</p>
+ <label for="Content">Page content:</label><br>
+ <input type="text" id="Content" name="Content" value="{{ pagecontent }}"><br>
+ <label for="Description">Change description:</label><br>
+ <input type="text" id="Description" name="Description" value="{{ change_description }}"><br><br>
+ <label for="Name">Name:</label><br>
+ <input type="text" id="Name" name="Name" value="{{ user_name }}"><br><br>
+ <label for="Email">Email:</label><br>
+ <input type="text" id="Email" name="Email" value="{{ user_email }}"><br><br>
+ <p>{{ error_message }}</p>
+ <input type="submit" value="Submit">
+</form>
 
-<form action="/edit/{{ pagename }}">
-  <label for="Content">Page content:</label><br>
-  <input type="text" id="Content" name="Content" value="{{ pagecontent }}"><br>
-  <label for="Description">Change description:</label><br>
-  <input type="text" id="Description" name="Description"><br><br>
-  <label for="Name">Name:</label><br>
-  <input type="text" id="Name" name="Name"><br><br>
-  <label for="Email">Email:</label><br>
-  <input type="text" id="Email" name="Email"><br><br>
-  <input type="submit" value="Submit">
-</form> 
