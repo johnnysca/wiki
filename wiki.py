@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask import render_template
 import format
+import os
 
 app = Flask(__name__)
 
@@ -58,13 +59,24 @@ def page_request(page_name: str) -> str:
         with open("pages/" + str(page_name) + ".txt", "r") as file:
             content = file.read()
     except FileNotFoundError:
-        raise FileNotFoundError
+        #raise FileNotFoundError
+        return render_template("Error404.html", pagename = page_name ), 404
 
     with open("templates/" + str(page_name) + ".html", "w") as file:
         file.write(format.formatter(content))
 
     # Load the desired page content
     return render_template(page_name + ".html")
+
+
+@app.route("/edit/<page_name>")
+def edit_page(page_name):
+    if os.path.exists(os.path.join("pages", f"{page_name}.txt")):
+        with open(os.path.join("pages", f"{page_name}.txt")) as f:
+            content = f.read() 
+        return render_template("Editform.html", pagename = page_name, pagecontent= content)
+    else:
+        return render_template("Editform.html", pagename = page_name, pagecontent= "")
 
 
 @app.route("/api/v1/page/<page_name>/get")

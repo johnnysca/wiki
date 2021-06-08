@@ -1,0 +1,13 @@
+<h2>Edit Wiki Page: {{ pagename }}</h2>
+
+<form action="/edit/{{ pagename }}">
+  <label for="Content">Page content:</label><br>
+  <input type="text" id="Content" name="Content" value="{{ pagecontent }}"><br>
+  <label for="Description">Change description:</label><br>
+  <input type="text" id="Description" name="Description"><br><br>
+  <label for="Name">Name:</label><br>
+  <input type="text" id="Name" name="Name"><br><br>
+  <label for="Email">Email:</label><br>
+  <input type="text" id="Email" name="Email"><br><br>
+  <input type="submit" value="Submit">
+</form> 

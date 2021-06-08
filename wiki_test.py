@@ -43,8 +43,10 @@ def test_empty_page_name(client):
     """Tests file not found error"""
 
     # Assert
-    with pytest.raises(FileNotFoundError):
-        client.get("/view/<TMNT>")
+    #with pytest.raises(FileNotFoundError):
+        #client.get("/view/<TMNT>")
+    response = client.get("/view/<TMNT>")
+    assert response.status_code == 404
 
 
 def test_view_page_name(client):
