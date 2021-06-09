@@ -1,7 +1,6 @@
 # import pathlib
 import pytest  # type:ignore
 import wiki
-from flask import render_template
 
 
 # TODO: add more comments after docstring clarification
