@@ -12,7 +12,7 @@ def main():
 
 # Example function, to be changed or deleted later
 @app.route("/about")
-def handle_request(name="wiki", content="stuff"):
+def handle_request(name="wiki", content="I am testing the background, this should be fuchsia"):
     """
     Calls Render Template passing paramaters that map to properties of web page.
 
