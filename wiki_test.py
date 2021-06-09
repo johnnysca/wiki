@@ -1,6 +1,7 @@
 # import pathlib
 import pytest  # type:ignore
 import wiki
+from flask import render_template
 
 
 # TODO: add more comments after docstring clarification
@@ -72,3 +73,62 @@ def test_formatting(client):
         b'<a href="https://images.app.goo.gl/cF4oaTNxEPsMFKk76">Memorial day picture</a>'
         in resp.data
     )
+
+
+def test_edit_page(client):
+    resp = client.get("/edit/PageName")
+
+    assert 200 == resp.status_code
+
+
+def test_error_message_404(client):
+    resp = client.get("/view/NoPageFound")
+
+    assert b"<!DOCTYPE html>" in resp.data
+    assert b"<h1>Error 404 Page Not Found</h1>" in resp.data
+    assert (
+        b'<p>Page can be created <a href="/edit/NoPageFound">here</a></p>' in resp.data
+    )
+
+
+def test_save_page_edits():
+    wiki.save_page_edits("Test_log", "John Doe", "john@doe.com", "some changes here.")
+    with open("history_log/Test_log.log") as f:
+        contents = f.read()
+    assert "John Doe" in contents
+    assert "john@doe.com" in contents
+    assert "some changes here." in contents
+
+
+def test_load_logs():
+    expected = [
+        {
+            "Time": "2021-06-09 14:36:12.919747",
+            "Name": "Jane Doe",
+            "Email": "jane@doe.com",
+            "Change Description": "some change",
+        },
+        {
+            "Time": "2021-06-09 14:39:41.279648",
+            "Name": "John Doe",
+            "Email": "john@doe.com",
+            "Change Description": "some change",
+        },
+    ]
+    output = wiki.load_page_logs("TestPageLog")
+
+    assert output == expected
+
+
+def test_view_page_history(client):
+    resp = client.get("/history/TestPageLog")
+
+    assert b"Jane Doe" in resp.data
+    assert b"John Doe" in resp.data
+    assert b"jane@doe.com" in resp.data
+    assert b"john@doe.com" in resp.data
+    assert b"some change" in resp.data
+    assert b"2021-06-09 14:36:12.91974" in resp.data
+    assert b"2021-06-09 14:39:41.279648" in resp.data
+
+    assert resp.status_code == 200

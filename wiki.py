@@ -143,7 +143,8 @@ def load_page_logs(filename):
         logs = content.split(space)
         output = []
         for log in logs:
-            if log == "": continue
+            if log == "":
+                continue
             items = log.split(comma)
             log_dict = {}
             log_dict["Time"] = items[0]
