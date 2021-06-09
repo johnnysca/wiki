@@ -5,6 +5,7 @@ import wiki
 
 # TODO: add more comments after docstring clarification
 
+
 @pytest.fixture
 def client():
     # Arrange
@@ -43,8 +44,8 @@ def test_empty_page_name(client):
     """Tests file not found error"""
 
     # Assert
-    #with pytest.raises(FileNotFoundError):
-        #client.get("/view/<TMNT>")
+    # with pytest.raises(FileNotFoundError):
+    # client.get("/view/<TMNT>")
     response = client.get("/view/<TMNT>")
     assert response.status_code == 404
 
