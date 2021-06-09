@@ -98,6 +98,8 @@ def edit_page(page_name):
 
 
 def save_page_edits(filename, name, email, description):
+    if not os.path.exists("history_log"):
+        os.mkdir("history_log")
     with open(os.path.join("history_log", f"{filename}.log"), "a") as f:
         time = str(datetime.datetime.now())
         row = [time, name, email, description]
@@ -141,6 +143,7 @@ def load_page_logs(filename):
         logs = content.split(space)
         output = []
         for log in logs:
+            if log == "": continue
             items = log.split(comma)
             log_dict = {}
             log_dict["Time"] = items[0]
