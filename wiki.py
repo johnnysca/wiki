@@ -8,6 +8,7 @@ import datetime
 app = Flask(__name__)
 pages = set()
 
+
 @app.route("/")
 def main():
     return front_page_request()
@@ -80,9 +81,8 @@ def page_request(page_name: str) -> Tuple[str, int]:
             header = "<h2> Pages </h2><br>"
             file.write(header)
             for page in pages:
-                link ="<a href=" + "/view/" + str(page) + ">" + str(page) + "</a><br>"
+                link = "<a href=" + "/view/" + str(page) + ">" + str(page) + "</a><br>"
                 file.write(link)
-
 
     # Load the desired page content
     return render_template(page_name + ".html"), 200
