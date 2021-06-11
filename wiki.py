@@ -66,9 +66,16 @@ def page_request(page_name: str) -> Tuple[str, int]:
 
     with open("templates/" + str(page_name) + ".html", "w") as file:
         file.write(format.formatter(content))
-        if str(page_name) != 'FrontPage':
-            file.write("<a href=" + "/edit/"+str(page_name)+">Edit this page here.</a><br>")
-            file.write("<a href=" + "/history/"+str(page_name)+">View page history.</a><br>")
+        if str(page_name) != "FrontPage":
+            file.write(
+                "<a href=" + "/edit/" + str(page_name) + ">Edit this page here.</a><br>"
+            )
+            file.write(
+                "<a href="
+                + "/history/"
+                + str(page_name)
+                + ">View page history.</a><br>"
+            )
 
     # Load the desired page content
     return render_template(page_name + ".html"), 200

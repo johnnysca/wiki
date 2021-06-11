@@ -91,7 +91,9 @@ def test_error_message_404(client):
 
 
 def test_save_page_edits():
-    wiki.save_page_edits("TestSavePageEdits", "John Doe", "john@doe.com", "some changes here.")
+    wiki.save_page_edits(
+        "TestSavePageEdits", "John Doe", "john@doe.com", "some changes here."
+    )
     with open("history_log/TestSavePageEdits.csv") as f:
         contents = f.read()
     assert "John Doe" in contents
