@@ -3,9 +3,9 @@
 <form action="/edit/{{ pagename }}" method="post">
  <p>(All edits must be written in <a href="https://www.markdownguide.org/basic-syntax/">Markdown syntax.</a>)</p>
  <label for="Content">Page content:</label><br>
- <input type="text" id="Content" name="Content" value="{{ pagecontent }}"><br>
+ <textarea type="text" id="Content" name="Content" rows="5" cols="80">{{ pagecontent }}</textarea> <br>
  <label for="Description">Change description:</label><br>
- <input type="text" id="Description" name="Description" value="{{ change_description }}"><br><br>
+ <textarea type="text" id="Description" name="Description" rows="5" cols="40">{{ change_description }}</textarea> <br>
  <label for="Name">Name:</label><br>
  <input type="text" id="Name" name="Name" value="{{ user_name }}"><br><br>
  <label for="Email">Email:</label><br>
