@@ -6,7 +6,7 @@ import os
 import datetime
 
 app = Flask(__name__)
-
+pages = set()
 
 @app.route("/")
 def main():
@@ -76,6 +76,13 @@ def page_request(page_name: str) -> Tuple[str, int]:
                 + str(page_name)
                 + ">View page history.</a><br>"
             )
+        else:
+            header = "<h2> Pages </h2><br>"
+            file.write(header)
+            for page in pages:
+                link ="<a href=" + "/view/" + str(page) + ">" + str(page) + "</a><br>"
+                file.write(link)
+
 
     # Load the desired page content
     return render_template(page_name + ".html"), 200
@@ -83,6 +90,7 @@ def page_request(page_name: str) -> Tuple[str, int]:
 
 @app.route("/edit/<page_name>")
 def edit_page(page_name):
+    pages.add(str(page_name))
     if os.path.exists(os.path.join("pages", f"{page_name}.txt")):
         with open(os.path.join("pages", f"{page_name}.txt")) as f:
             content = f.read()
