@@ -1,12 +1,12 @@
 from flask import Flask, request, redirect, url_for
 from flask import render_template
-from typing import Tuple
+from typing import Tuple, Set
 import format
 import os
 import datetime
 
 app = Flask(__name__)
-pages = set()
+pages: Set[str] = set()
 
 
 @app.route("/")
