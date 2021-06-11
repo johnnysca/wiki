@@ -91,8 +91,8 @@ def test_error_message_404(client):
 
 
 def test_save_page_edits():
-    wiki.save_page_edits("Test_log", "John Doe", "john@doe.com", "some changes here.")
-    with open("history_log/Test_log.log") as f:
+    wiki.save_page_edits("TestSavePageEdits", "John Doe", "john@doe.com", "some changes here.")
+    with open("history_log/TestSavePageEdits.csv") as f:
         contents = f.read()
     assert "John Doe" in contents
     assert "john@doe.com" in contents
@@ -106,35 +106,32 @@ work on a local device.
 """
 
 
-# def test_load_logs():
-# expected = [
-#     {
-#         "Time": "2021-06-09 14:36:12.919747",
-#         "Name": "Jane Doe",
-#         "Email": "jane@doe.com",
-#         "Change Description": "some change",
-#     },
-#     {
-#         "Time": "2021-06-09 14:39:41.279648",
-#         "Name": "John Doe",
-#         "Email": "john@doe.com",
-#         "Change Description": "some change",
-#     },
-# ]
-# output = wiki.load_page_logs("TestPageLog")
-
-# assert output == expected
+def test_load_logs():
+    expected_log1 = {
+        "Time": "2021-06-11 20:30:01.938531",
+        "Name": "Jane Doe",
+        "Email": "jane@doe.com",
+        "Change Description": "some changes here.",
+    }
+    expected_log2 = {
+        "Time": "2021-06-11 20:32:06.235717",
+        "Name": "John Doe",
+        "Email": "john@doe.com",
+        "Change Description": "some changes here.",
+    }
+    output = wiki.load_page_logs("Test_log")
+    assert expected_log1 in output
+    assert expected_log2 in output
 
 
-# def test_view_page_history(client):
-#     resp = client.get("/history/TestPageLog")
+def test_view_page_history(client):
+    resp = client.get("/history/Test_log")
 
-#     assert b"Jane Doe" in resp.data
-#     assert b"John Doe" in resp.data
-#     assert b"jane@doe.com" in resp.data
-#     assert b"john@doe.com" in resp.data
-#     assert b"some change" in resp.data
-#     assert b"2021-06-09 14:36:12.91974" in resp.data
-#     assert b"2021-06-09 14:39:41.279648" in resp.data
-
-#     assert resp.status_code == 200
+    assert b"Jane Doe" in resp.data
+    assert b"John Doe" in resp.data
+    assert b"jane@doe.com" in resp.data
+    assert b"john@doe.com" in resp.data
+    assert b"some changes here." in resp.data
+    assert b"2021-06-11 20:30:01.938531" in resp.data
+    assert b"2021-06-11 20:32:06.235717" in resp.data
+    assert resp.status_code == 200

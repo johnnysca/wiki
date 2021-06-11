@@ -100,7 +100,7 @@ def edit_page(page_name):
 def save_page_edits(filename, name, email, description):
     if not os.path.exists("history_log"):
         os.mkdir("history_log")
-    with open(os.path.join("history_log", f"{filename}.log"), "a") as f:
+    with open(os.path.join("history_log", f"{filename}.csv"), "a") as f:
         time = str(datetime.datetime.now())
         row = [time, name, email, description]
         f.write("&#44;".join(row))
@@ -136,7 +136,7 @@ def post_edited_page(page_name):
 
 
 def load_page_logs(filename):
-    with open(os.path.join("history_log", f"{filename}.log"), "r") as f:
+    with open(os.path.join("history_log", f"{filename}.csv"), "r") as f:
         space = "&#32;"
         comma = "&#44;"
         content = f.read()
@@ -157,7 +157,7 @@ def load_page_logs(filename):
 
 @app.route("/history/<page_name>")
 def view_page_history(page_name):
-    if not (os.path.exists(os.path.join("history_log", f"{page_name}.log"))):
+    if not (os.path.exists(os.path.join("history_log", f"{page_name}.csv"))):
         return "No history has been found for this page."
     logs = load_page_logs(page_name)
     return render_template("HistoryTemplate.html", logs=logs, page_name=page_name)
