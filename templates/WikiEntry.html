@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ page_name }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+</head>
+<body>
+    <p>{{ page_content | safe}}
+    {{edit_link | safe}}
+    {{history_link | safe}}</p>
+</body>
+</html>

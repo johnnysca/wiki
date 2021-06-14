@@ -15,7 +15,9 @@ def main():
 
 # Example function, to be changed or deleted later
 @app.route("/about")
-def handle_request(name="Fedora Wiki", content="I am testing the background, this should be red"):
+def handle_request(
+    name="Fedora Wiki", content="I am testing the background, this should be red"
+):
     """
     Calls Render Template passing paramaters that map to properties of web page.
 
@@ -58,53 +60,48 @@ def page_request(page_name: str) -> Tuple[str, int]:
         FileNotFoundError: Flags when the txt file requested cant be found
     """
     try:
-        with open("pages/" + str(page_name) + ".txt", "r") as file:
-            content = file.read()
+        with open("pages/text_pages/" + str(page_name) + ".txt", "r") as file:
+            txt_content = file.read()
     except FileNotFoundError:
         # raise FileNotFoundError
         return render_template("Error404.html", pagename=page_name), 404
 
-    with open("templates/" + str(page_name) + ".html", "w") as file:
-        file.write(format.formatter(content))
-        if str(page_name) != "FrontPage":
-            file.write(
-                "<a href=" + "/edit/" + str(page_name) + ">Edit this page here.</a><br>"
-            )
-            file.write(
-                "<a href="
-                + "/history/"
-                + str(page_name)
-                + ">View page history.</a><br>"
-            )
+    html_path = "pages/html_pages/" + str(page_name) + ".html"
+    with open(html_path, "w") as file:
+        file.write(format.formatter(txt_content))
+
+    with open("pages/html_pages/" + str(page_name) + ".html", "r") as file:
+        html_content = file.read()
 
     # Load the desired page content
-    return render_template(page_name + ".html"), 200
+    return (
+        render_template(
+            "WikiEntry" + ".html",
+            page_content=html_content,
+            edit_link="<a href=/edit/" + str(page_name) + ">Edit page.</a>",
+            history_link="<a href=/history/" + str(page_name) + ">Page history.</a>",
+        ),
+        200,
+    )
 
 
 @app.route("/edit/<page_name>")
 def edit_page(page_name):
-    if os.path.exists(os.path.join("pages", f"{page_name}.txt")):
-        with open(os.path.join("pages", f"{page_name}.txt")) as f:
+    if os.path.exists("pages/text_pages/" + str(page_name) + ".txt"):
+        with open("pages/text_pages/" + str(page_name) + ".txt", "r") as f:
             content = f.read()
-        return render_template(
-            "Editform.html",
-            pagename=page_name,
-            pagecontent=content,
-            change_description="",
-            user_name="",
-            user_email="",
-            error_message="",
-        )
     else:
-        return render_template(
-            "Editform.html",
-            pagename=page_name,
-            pagecontent="",
-            change_description="",
-            user_name="",
-            user_email="",
-            error_message="",
-        )
+        content = ""
+
+    return render_template(
+        "Editform.html",
+        pagename=page_name,
+        pagecontent=content,
+        change_description="",
+        user_name="",
+        user_email="",
+        error_message="",
+    )
 
 
 def save_page_edits(filename, name, email, description):
@@ -120,7 +117,7 @@ def save_page_edits(filename, name, email, description):
 @app.route("/edit/<page_name>", methods=["POST"])
 def post_edited_page(page_name):
     if request.form["Description"] and request.form["Name"] and request.form["Email"]:
-        with open(os.path.join("pages", f"{page_name}.txt"), "w") as f:
+        with open(os.path.join("pages/text_pages/", f"{page_name}.txt"), "w") as f:
             f.write(request.form["Content"])
         save_page_edits(
             page_name,
@@ -180,7 +177,7 @@ def page_api_get(page_name):
     status_code = 200
     # TODO: implement response
     if f == "all":
-        with open("pages/" + str(page_name) + ".txt", "r") as file:
+        with open("pages/text_pages/" + str(page_name) + ".txt", "r") as file:
             content = file.read()
         h_content = format.formatter(content)
         json_response = {"success": True, "raw": content, "html": h_content}
