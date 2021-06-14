@@ -15,7 +15,7 @@ def main():
 
 # Example function, to be changed or deleted later
 @app.route("/about")
-def handle_request(name="wiki", content="I am testing the background, this should be fuchsia"):
+def handle_request(name="Fedora Wiki", content="I am testing the background, this should be red"):
     """
     Calls Render Template passing paramaters that map to properties of web page.
 

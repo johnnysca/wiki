@@ -1,5 +1,9 @@
 /* This is where my CSS will go! */
-pre{
-    /*to view this call /about */
-    background-color: fuchsia;
+body {
+background-color : red;
+}
+p {
+color : black;
+font-family : comic sans-serif;
+font-size : 160%;
 }
