@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fedora Wiki</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" />
+</head>
+<h2>Welcome to the<br><img src="/static/Google_2015_logo.svg" alt="google logo">  <img src="/static/croppedlogotech.png" width=272 height=92 alt="techx logo">Wiki</h2>
+<body>
+    <p>{{ page_content | safe }}</p>
+    <h3>Some of the coolest Googlers:</h3>
+    {% for ggler in list_gglers %}
+        {{ ggler | safe}}<br>
+    {% endfor %}
+</body>
+</html>

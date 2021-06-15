@@ -70,13 +70,28 @@ def page_request(page_name: str) -> Tuple[str, int]:
     with open(html_path, "w") as file:
         file.write(format.formatter(txt_content))
 
-    with open("pages/html_pages/" + str(page_name) + ".html", "r") as file:
+    with open(html_path, "r") as file:
         html_content = file.read()
 
     # Load the desired page content
+    if page_name == "FrontPage":
+        with open("googlers.txt", "r") as file:
+            gglers = [line.rstrip() for line in file]
+        return (
+            render_template(
+                "Front_Page_Template.html",
+                page_content=html_content,
+                edit_link="<a href=/edit/" + str(page_name) + ">Edit page.</a>",
+                history_link="<a href=/history/"
+                + str(page_name)
+                + ">Page history.</a>",
+                list_gglers=gglers,
+            ),
+            200,
+        )
     return (
         render_template(
-            "WikiEntry" + ".html",
+            "WikiEntry.html",
             page_content=html_content,
             edit_link="<a href=/edit/" + str(page_name) + ">Edit page.</a>",
             history_link="<a href=/history/" + str(page_name) + ">Page history.</a>",
