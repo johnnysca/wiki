@@ -15,9 +15,7 @@ def main():
 
 # Example function, to be changed or deleted later
 @app.route("/about")
-def handle_request(
-    name="Fedora Wiki", content="I am testing the background, this should be red"
-):
+def handle_request(name="about", content=""):
     """
     Calls Render Template passing paramaters that map to properties of web page.
 
@@ -28,10 +26,11 @@ def handle_request(
     Returns:
         Rendered webpage containing the arguments, but displayed in plaintext.
     """
+    with open("pages/text_pages/about.txt", "r") as f:
+        content = format.formatter(f.read())
+
     return render_template(
-        "main.html",
-        page_name=name,
-        page_content=content,
+        "main.html", pagename=name, content=content
     )  # pragma: no cover
 
 
@@ -89,6 +88,7 @@ def page_request(page_name: str) -> Tuple[str, int]:
             ),
             200,
         )
+
     return (
         render_template(
             "WikiEntry.html",
@@ -131,6 +131,16 @@ def save_page_edits(filename, name, email, description):
 
 @app.route("/edit/<page_name>", methods=["POST"])
 def post_edited_page(page_name):
+    if not os.path.exists("pages/html_pages/" + str(page_name) + ".html"):
+        with open("googlers.txt", "a") as f:
+            f.write(
+                '<a href="/view/'
+                + str(page_name)
+                + '">'
+                + format.split_name(page_name)
+                + "</a>"
+            )
+            f.write("\n")
     if request.form["Description"] and request.form["Name"] and request.form["Email"]:
         with open(os.path.join("pages/text_pages/", f"{page_name}.txt"), "w") as f:
             f.write(request.form["Content"])

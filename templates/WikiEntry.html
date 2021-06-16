@@ -4,6 +4,10 @@
     <title>{{ page_name }}</title>
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
 </head>
+<ul class="nav">
+  <li><a href="/view"> Home </a></li>
+  <li style="float:right""><a href="/about">About</a></li>
+</ul>
 <body>    
     <p>{{ page_content | safe}}
     {{edit_link | safe}}

@@ -39,3 +39,13 @@ def remove_tags(str1):
     """
     taged_string = re.compile(r"<[^>]+>")
     return taged_string.sub("", str1)
+
+
+def split_name(name):
+    result = name
+    upper_cases = re.search(r"^([^A-Z]*[A-Z]){2}", result)
+    return (
+        result[0 : upper_cases.span()[1] - 1]
+        + " "
+        + result[upper_cases.span()[1] - 1 :]
+    )

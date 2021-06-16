@@ -1,0 +1,13 @@
+# About
+
+Initially, this program provided a lot of us with the ability to network with individuals of similar backgrounds and interests. Though virtual, the program has definitely given the opportunity of meeting the diverse workforce of Google and the added benefit of learning from others with more experience. Behind a screen, it's easy to forget that these are all real people, so to catalogue each of these individuals this wiki’s purpose is to create a hub of information accessible to the google tech students and mentors. The idea being that the information within the wiki should be about the mentors, volunteers, coaches and students. Built by tech exchange students for tech exchange students.
+
+
+The text below was the only text displayed on our webpage for the majority of the time weve been working on this. It was the original front page but that was changed due to design choices :|
+
+## This is the front page of Fedora's wiki
+
+This page will contain additional information 
+to be displayed in the **future**
+
+For now, look at this [ranch](https://images.app.goo.gl/jnYh7jueoT5iT1PC9)

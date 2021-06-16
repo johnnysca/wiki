@@ -1,6 +1,10 @@
-<h1>About Jack Rosenthal</h1>
-<p>(Picture coming maybe tomorrow)</p>
-<p><strong>Google career</strong>: Jack has been at Google for 2.5 years and is currently a Software Engineer. Jack played a role in the 2021 Summer Tech Exchange program as an Instructor for the Software Development Studio course.</p>
-<p><strong>Jack's favorites</strong>: Jack enjoys the memes about Google. He enjoys the Python programming language. His favorite color is yellow and his favorite food is ice cream. </p>
-<p><strong>One skill learned during the pandemic</strong>: Jack learned to cook. </p>
-<p><strong>Jack's advice for future Tech professionals</strong>: &quot;Get practice working on a team with others by building something cool with your friends&quot;.</p>
+# About Jack Rosenthal
+# ![Memelord](/static/JackRosenthal.jpg)
+# **Google career**: 
+Jack has been at Google for 2.5 years and is currently a Software Engineer. Jack played a role in the 2021 Summer Tech Exchange program as an Instructor for the Software Development Studio course.
+# **Jack's favorites**: 
+Jack enjoys the memes about Google. He enjoys the Python programming language. His favorite color is yellow and his favorite food is ice cream.
+# **One skill learned during the pandemic**: 
+Jack learned to cook. 
+# **Jack's advice for future Tech professionals**: 
+&quot;Get practice working on a team with others by building something cool with your friends&quot;.

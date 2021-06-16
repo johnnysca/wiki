@@ -4,17 +4,21 @@
     <title>{{ page_name }}</title>
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
 </head>
+<ul>
+  <li><a href="/view"> Home </a></li>
+  <li style="float:right"><a href="/about">About</a></li>
+</ul>
 <body>
     <h2>Edit Wiki Page: {{ pagename }}</h2>
     <form action="/edit/{{ pagename }}" method="post">
     <p>(All edits must be written in <a href="https://www.markdownguide.org/basic-syntax/">Markdown syntax.</a>)</p>
     <label for="Content">Page content:</label><br>
-    <textarea type="text" id="Content" name="Content" rows="5" cols="80">{{ pagecontent }}</textarea> <br>
-    <label for="Description">Change description:</label><br>
+    <textarea type="text" id="Content" name="Content" rows="20" cols="80">{{ pagecontent }}</textarea> <br>
+    <label for="Description">Description of change:</label><br>
     <textarea type="text" id="Description" name="Description" rows="5" cols="40">{{ change_description }}</textarea> <br>
-    <label for="Name">Name:</label><br>
+    <label for="Name">Editor's Name:</label><br>
     <input type="text" id="Name" name="Name" value="{{ user_name }}"><br><br>
-    <label for="Email">Email:</label><br>
+    <label for="Email">Editor's Email:</label><br>
     <input type="text" id="Email" name="Email" value="{{ user_email }}"><br><br>
     <p>{{ error_message }}</p>
     <input type="submit" value="Submit">
