@@ -12,7 +12,7 @@
 <body>
     <p>{{ page_content | safe }}</p>
     <h3>Some of the coolest Googlers:</h3>
-    <ul>
+    <ul class=people>
     {% for ggler in list_gglers %}
         <li>{{ ggler | safe}}</li>
     {% endfor %}

@@ -9,7 +9,6 @@ Prachi states her favorite thing about Google is &quot;I love that there are alw
 # **One skill learned during the pandemic**: 
 Prachi states, &quot;Learning from documentation and updating missing documentation for new members on the team. This is a very undervalued skill - good documentation can take up time when you start writing it but it makes life of everyone on the team significantly better in the long term&quot;.
 # **Prachi's advice for future Tech professionals**:
--- Reason with data, always. Any argument becomes twice as rich if presented with data.<br>
-
--- Learn deeply by asking &quot;why&quot;, understand the status quo and challenge it with data if it does not seem right
+* Reason with data, always. Any argument becomes twice as rich if presented with data.
+* Learn deeply by asking &quot;why&quot;, understand the status quo and challenge it with data if it does not seem right
 

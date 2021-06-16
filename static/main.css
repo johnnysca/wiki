@@ -11,8 +11,14 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden
+}
+ul.people {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #333 
 }
 ul.nav {
   position: fixed;
@@ -42,6 +48,7 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
 .active {
   background-color: lavenderblush;
   color: #333
