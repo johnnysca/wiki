@@ -4,7 +4,7 @@ A wiki server that uses text files on the local filesystem to store page data.
 
 ## Screenshots
 
-![A screenshot of the wiki page viewer. Screenshot includes a page title, header text, and links.](screenshots/view.png)
+![A screenshot of the wiki page viewer. Screenshot includes a page title, header text, and links.](screenshots/FrontPage.png)
 
 ## Installation
 
